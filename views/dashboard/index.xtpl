@@ -1,0 +1,79 @@
+{{extend('../layout/main')}}
+
+{{#block ('content')}}
+<!-- 个人资料 -->
+<div class="body teacher-profile">
+    <div class="profile">
+        <div class="row survey">
+            <div class="col-xs-3">
+                <div class="cell money">
+                    <i class="fa fa-money"></i>
+                    <span>我的收入</span>
+                    <h5>￥11.11</h5>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="cell th">
+                    <i class="fa fa-th"></i>
+                    <span>课程数量</span>
+                    <h5>12</h5>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="cell user">
+                    <i class="fa fa-user"></i>
+                    <span>用户数量</span>
+                    <h5>236</h5>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="cell eye">
+                    <i class="fa fa-eye"></i>
+                    <span>浏览量</span>
+                    <h5>22435</h5>
+                </div>
+            </div>
+        </div>
+        <div class="chart">
+            <div id="main" style="width: 600px;height:400px;"></div>
+        </div>
+    </div>
+</div>
+
+{{/block}}
+
+{{#block ('template')}}
+<script src="/assets/nprogress/nprogress.js"></script>
+<script src="/assets/echarts/echarts.min.js"></script>
+<script src="/js/common.js"></script>
+<script>
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data: ['活跃度']
+        },
+        xAxis: {
+            data: ["一月", "二月", "三月", "四月", "五月", "六月"]
+        },
+        yAxis: {},
+        series: [{
+            name: '活跃度',
+            type: 'bar',
+            data: [20, 10, 40, 55, 35, 40]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+</script>
+
+{{/block}}
