@@ -1,11 +1,17 @@
 var express = require ('express');
 
+var bodyParser = require('body-parser');
+
 var app = express();
 
 //设置模板引擎，模板位置
 app.set('views',__dirname +'/views');
 //使用xtpl模板
 app.set('view engine','xtpl');
+
+// 解析 application/x-www-form-urlencoded 将数据绑定在req中
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 //设置目录
 var index = require('./controllers/index');

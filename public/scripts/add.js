@@ -10,7 +10,13 @@ define(function (require,exports,module) {
         $.ajax({
             url:'/teacher/add',
             type:'post',
-            data:formData ,
+            data:formData,
+            success:function (info) {
+                if(info.code == 200){
+                    alert(info.msg);
+                    history.go(-1);
+                }
+            }
         })
         return false;//阻止默认行为
     });
