@@ -9,3 +9,13 @@ exports.add = function (body,callback) {
     //插入数据
     db.query('INSERT INTO `teacher` SET ?',body,callback);
 }
+
+//查询数据
+exports.show = function (callback) {
+    db.query('SELECT * FROM `teacher` ',callback);
+}
+
+//搜索讲师
+// exports.search = function (tc_name,callback) {
+//     db.query('SELECT * FROM `teacher` WHERE tc_name =' + tc_name,callback);
+// }
