@@ -33,7 +33,7 @@ router.post('/add',function (req,res) {
         res.json({
             code:200,
             msg:'添加成功',
-            ressult:{}
+            result:{}
         });
     });
 
@@ -63,17 +63,19 @@ router.post('/edit',function (req,res) {
         res.json({
             code:200,
             msg:'修改成功',
-            ressult:{}
+            result:{}
         });
     });
 
 })
 //搜索讲师
-// router.post('/search',function (req,res) {
-//     var body = req.body.tc_name;
-//     console.log(body);
-//     tcModel.search(body,function (err,result) {
-//         if(err) return;
-//         res.render('teachers/index',{teachers:result});
-//     });
-// })
+router.post('/search',function (req,res) {
+    var tc_name =  req.body.tc_name;
+    console.log(tc_name);
+    tcModel.search(tc_name,function (err,result) {
+        if(err) return;
+        res.json({
+            result:result
+        });
+    });
+})

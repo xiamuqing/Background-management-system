@@ -28,7 +28,8 @@ exports.find = function (tc_id,callback) {
 }
 
 //搜索讲师
-// exports.search = function (tc_name,callback) {
-//     db.query('SELECT * FROM `teacher` WHERE tc_name =' + tc_name,callback);
-// }
+exports.search = function (tc_name,callback) {
+    db.query("SELECT * FROM `teacher` WHERE tc_name LIKE '%"+tc_name+"%'"
+        ,callback);
+}
 

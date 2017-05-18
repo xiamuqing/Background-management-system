@@ -32,19 +32,4 @@ define(function (require,exports,module) {
         return false;//阻止默认行为
     });
 
-    // //查询讲师
-    // $('#tSearchForm').on('submit',function () {
-    //     console.log(22)
-    //     var formData = $(this).serialize();
-    //     console.log(formData)
-    //     $.ajax({
-    //         url:'/teacher/search',
-    //         type:'post',
-    //         data:formData,
-    //         success:function (info) {
-    //             console.log('chxun')
-    //         }
-    //     })
-    //     return false;//阻止默认行为
-    // })
 })
