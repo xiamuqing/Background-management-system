@@ -9,6 +9,13 @@ exports.add = function (body,callback) {
     //插入数据
     db.query('INSERT INTO `teacher` SET ?',body,callback);
 }
+exports.edit = function (body,callback) {
+    var tc_id = body.tc_id;
+    delete tc_id;
+    var query = 'UPDATE `teacher` SET ? WHERE `tc_id` ='+ tc_id;
+
+    db.query(query,body,callback);
+}
 
 //查询所有数据
 exports.show = function (callback) {

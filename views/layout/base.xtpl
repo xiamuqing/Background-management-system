@@ -17,19 +17,29 @@
 
 {{{block ('template')}}}
 <script src="/libs/sea.js"></script>
-{{{block ('script')}}}
+<script src="/libs/seajs-preload.js"></script>
 <script>
+    // 配置
     seajs.config({
         base: '/assets',
+        //别名
         alias: {
             jquery: 'jquery/jquery.js',
+            validate: 'jquery-validate/jquery-validate.js',
+            form: 'jquery-form/jquery.form.js',
             bootstrap: 'bootstrap/js/bootstrap.js',
-            nprogress: 'nprogress/nprogress.js',
-            echarts: 'echarts/echarts.js'
-        }
-    })
-    seajs.use('/scripts/common');
+            datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker',
+            language: 'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js',
+            template: 'artTemplate/template-native.js',
+            nprogress: 'nprogress/nprogress.js'
+        },
+        // 实现全局模块提前加载
+        // 在使用use后才会执行
+        // 但是提前于use
+        preload: ['/scripts/common', 'bootstrap']
+    });
 </script>
+{{{block ('script')}}}
 
 
 </body>

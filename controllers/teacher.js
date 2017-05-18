@@ -20,17 +20,6 @@ router.get('/',function (req,res) {
 router.get('/add',function (req,res) {
     res.render('teachers/add',{});
 })
-//编辑 :表示参数
-router.get('/edit/:tc_id',function (req,res) {
-    var tc_id = req.params.tc_id;
-
-    //调用模型查询讲师信息
-    tcModel.find(tc_id,function (err,result) {
-        if(err) return;
-       // console.log(result);
-        res.render('teachers/add',result);
-    });
-})
 
 //添加讲师
 router.post('/add',function (req,res) {
@@ -50,6 +39,35 @@ router.post('/add',function (req,res) {
 
 })
 
+//编辑 :表示参数
+router.get('/edit/:tc_id',function (req,res) {
+    var tc_id = req.params.tc_id;
+
+    //调用模型查询讲师信息
+    tcModel.find(tc_id,function (err,result) {
+        if(err) return;
+        // console.log(result);
+        res.render('teachers/add',{teacher:result[0]});
+    });
+})
+
+//编辑
+router.post('/edit',function (req,res) {
+    //post数据
+    console.log(req.body);
+    var body = req.body;
+    //调用数据 更新至数据库
+    tcModel.edit(body,function (err,result) {
+        if(err) return ;
+        //成功后返回前台一个json
+        res.json({
+            code:200,
+            msg:'修改成功',
+            ressult:{}
+        });
+    });
+
+})
 //搜索讲师
 // router.post('/search',function (req,res) {
 //     var body = req.body.tc_name;

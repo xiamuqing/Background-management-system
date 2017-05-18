@@ -1,7 +1,6 @@
 define(function (require,exports,module) {
     //依赖bootstrap
     var $ = require('jquery');
-    require('bootstrap');
 
     var teacherModal = $('#teacherModal');
     $('#teacherList').on('click','a.preview',function () {
