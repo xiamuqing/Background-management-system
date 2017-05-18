@@ -10,12 +10,18 @@ exports.add = function (body,callback) {
     db.query('INSERT INTO `teacher` SET ?',body,callback);
 }
 
-//查询数据
+//查询所有数据
 exports.show = function (callback) {
     db.query('SELECT * FROM `teacher` ',callback);
+}
+
+//查询当数据
+exports.find = function (tc_id,callback) {
+    db.query('SELECT * FROM `teacher` WHERE tc_id = '+tc_id,callback);
 }
 
 //搜索讲师
 // exports.search = function (tc_name,callback) {
 //     db.query('SELECT * FROM `teacher` WHERE tc_name =' + tc_name,callback);
 // }
+

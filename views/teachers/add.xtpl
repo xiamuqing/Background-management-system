@@ -60,6 +60,6 @@
 
 {{#block ('script')}}
 <script>
-    seajs.use('/scripts/add.js')
+    seajs.use('/scripts/teachers/add.js')
 </script>
 {{/block}}

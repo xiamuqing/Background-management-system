@@ -18,7 +18,18 @@ router.get('/',function (req,res) {
     });
 })
 router.get('/add',function (req,res) {
-    res.render('teachers/add');
+    res.render('teachers/add',{});
+})
+//编辑 :表示参数
+router.get('/edit/:tc_id',function (req,res) {
+    var tc_id = req.params.tc_id;
+
+    //调用模型查询讲师信息
+    tcModel.find(tc_id,function (err,result) {
+        if(err) return;
+       // console.log(result);
+        res.render('teachers/add',result);
+    });
 })
 
 //添加讲师
