@@ -28,8 +28,6 @@
             validate: 'jquery-validate/jquery-validate.js',
             form: 'jquery-form/jquery.form.js',
             bootstrap: 'bootstrap/js/bootstrap.js',
-            datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker',
-            language: 'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js',
             template: 'artTemplate/template-native.js',
             nprogress: 'nprogress/nprogress.js'
         },

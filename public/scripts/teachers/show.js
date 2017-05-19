@@ -51,18 +51,18 @@ define(function (require,exports,module) {
 
     //注销和取消
     $('.Tstate').on('click',function (e) {
-        //alert($(e.target).attr('state'));
-        var status=$(e.target).attr('state');
         var tcid=$(e.target).attr('tcid');
-        $.ajax({
-            url: '/teacher/state',
-            type: 'post',
-            data: {tc_id:tcid},
-            success:function (info) {
-                if(info.code == 200){
-                    location.reload();
+        if(confirm('注销后该用户无法登入，确定注销吗？')){
+            $.ajax({
+                url: '/teacher/state',
+                type: 'post',
+                data: {tc_id:tcid},
+                success:function (info) {
+                    if(info.code == 200){
+                        location.reload();
+                    }
                 }
-            }
-        })
+            })
+        }
     })
 })

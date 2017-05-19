@@ -1,16 +1,19 @@
 define(function (require,exports,module) {
     var $ = require('jquery');
+    
+    //进度条
+    var NProgress = require('nprogress');
     //退出
     $('#logout').on('click',function () {
         if(confirm('确定退出？')){
             location.replace(location.protocol+'//'+location.host+'/login');
         }
     })
-//下拉菜单伸缩展开
+    //下拉菜单伸缩展开
     $('.navs a[href="javascript:;"]').on('click',function(){
         $(this).next('ul').slideToggle();
     })
-//选中状态
+    //选中状态
     $('.navs a').each(function(){
         var _this = $(this),
             href =_this.attr('href').slice(1),
@@ -21,4 +24,8 @@ define(function (require,exports,module) {
             return false;
         }
     })
+
+    NProgress.start();
+    NProgress.done();
+
 })
