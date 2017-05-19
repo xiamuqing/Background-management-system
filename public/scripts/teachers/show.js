@@ -2,10 +2,26 @@ define(function (require,exports,module) {
     //依赖bootstrap
     var $ = require('jquery');
 
+    var template = require('template');
+
     var teacherModal = $('#teacherModal');
+
+    //展示讲师（模态框）
     $('#teacherList').on('click','a.preview',function () {
-        teacherModal.modal();
-        
+        var html = '';
+        var tc_id = $(this).attr('tcid');
+       $.ajax({
+           url:'/teacher/preview',
+           type:'post',
+           data:{tc_id:tc_id},
+           success:function (info) {
+                //前端模板引擎
+               html = template('teacherTpl',info);
+               teacherModal.find('table').html('');
+               teacherModal.find('table').append(html);
+               teacherModal.modal();
+           }
+       })
         //阻止默认行为
         return false;
     })
@@ -65,4 +81,5 @@ define(function (require,exports,module) {
             })
         }
     })
+
 })

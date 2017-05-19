@@ -33,7 +33,7 @@ exports.search = function (tc_name,callback) {
         ,callback);
 }
 
-//注销和回复讲师
+//注销讲师
 exports.status = function (tc_id,callback) {
     var query = "UPDATE `teacher` SET `tc_status` = 1 WHERE `tc_id` ="+ tc_id;
     db.query(query,callback);

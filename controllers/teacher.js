@@ -80,7 +80,7 @@ router.post('/search',function (req,res) {
     });
 })
 
-//注销和恢复讲师
+//注销讲师
 router.post('/state',function (req,res) {
     var tcid = req.body.tc_id;
     tcModel.status(tcid,function (err,result) {
@@ -88,5 +88,17 @@ router.post('/state',function (req,res) {
         res.json({
             code:200,
         })
+    })
+})
+
+//查看讲师信息（模态框）
+router.post('/preview',function (req,res) {
+    //接收前端传来的讲师ID
+    //console.log(req.body)
+    var tc_id = req.body.tc_id;
+    tcModel.find(tc_id,function (err,result) {
+        if(err) return;
+       // console.log(result);
+        res.json(result[0]);
     })
 })

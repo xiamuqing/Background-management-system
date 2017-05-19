@@ -18,6 +18,8 @@
 {{{block ('template')}}}
 <script src="/libs/sea.js"></script>
 <script src="/libs/seajs-preload.js"></script>
+
+{{{block ('tpl')}}}
 <script>
     // 配置
     seajs.config({
