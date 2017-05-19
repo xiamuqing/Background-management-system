@@ -10,10 +10,9 @@ define(function (require,exports,module) {
         return false;
     })
 
-
-
     //搜索讲师
     $('#tSearchForm').on('submit',function () {
+        console.log($(this).serialize());
         $.ajax({
             url:'/teacher/search',
             type:'post',
@@ -24,7 +23,13 @@ define(function (require,exports,module) {
                 var result=info.result;
                 for(var i=0; i<result.length; i++){
                     var gender = '男';
+                    var statusHtml ='';
                     if(result[i].tc_gender) gender='女';
+                    if(result[i].tc_status) {
+                        statusHtml="<a href='javascript:;' class='btn btn-danger btn-xs Tstate' tcid='{{this.tc_id}}'>已注销</a>"
+                    }else{
+                        statusHtml="<a href='javascript:;' class='btn btn-warning btn-xs Tstate' tcid='{{this.tc_id}}'>注 销</a>"
+                    }
                     var Thtml="<tr><td>"+ (i-2+3) +"</td>" +
                             "<td>"+ result[i].tc_name +"</td>"+
                             "<td>"+ result[i].tc_roster +"</td>"+
@@ -34,7 +39,7 @@ define(function (require,exports,module) {
                         "<td>"+
                             "<a href='javascript:;' data-toggle='modal' class='btn btn-info btn-xs preview' >查 看</a> "+
                             "<a href='/teacher/edit/"+result[i].tc_id+"' class='btn btn-info btn-xs'>编 辑</a>"+
-                            "<a href='javascript:;' class='btn btn-warning btn-xs'>注 销</a>"+
+                            statusHtml+
                         "</td>"+
                         "</tr>";
                     $('#Tbody').append(Thtml);
@@ -42,5 +47,22 @@ define(function (require,exports,module) {
             }
         })
         return false;
+    })
+
+    //注销和取消
+    $('.Tstate').on('click',function (e) {
+        //alert($(e.target).attr('state'));
+        var status=$(e.target).attr('state');
+        var tcid=$(e.target).attr('tcid');
+        $.ajax({
+            url: '/teacher/state',
+            type: 'post',
+            data: {tc_id:tcid},
+            success:function (info) {
+                if(info.code == 200){
+                    location.reload();
+                }
+            }
+        })
     })
 })

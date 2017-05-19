@@ -79,3 +79,14 @@ router.post('/search',function (req,res) {
         });
     });
 })
+
+//注销和恢复讲师
+router.post('/state',function (req,res) {
+    var tcid = req.body.tc_id;
+    tcModel.status(tcid,function (err,result) {
+        if(err) return;
+        res.json({
+            code:200,
+        })
+    })
+})
