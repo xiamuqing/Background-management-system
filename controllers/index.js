@@ -2,6 +2,9 @@ var express = require('express');
 
 var tcModal = require('../models/teacher');
 
+//省市县数据
+var region = require('../models/region.json');
+
 //路由
 var router = express.Router();
 
@@ -28,4 +31,8 @@ router.get('/settings',function(req,res){
 //修改密码
 router.get('/repass',function (req,res) {
     res.render('dashboard/repass',{})
+})
+
+router.get('/region',function (req,res) {
+    res.json(region);
 })
