@@ -1,6 +1,9 @@
 define(function (require,exports,module) {
     var $ = require('jquery');
 
+    var ckeditor = require('ckeditor');
+    ckeditor.replace('teacherIntroduce');
+
     //时间显示
     var inputs=$("input[type='datetime-local']");
     var localtime;

@@ -14,7 +14,6 @@
 {{{block ('main')}}}
 {{{block ('plain')}}}
 <script src="/assets/jquery/jquery.js"></script>
-
 {{{block ('template')}}}
 <script src="/libs/sea.js"></script>
 <script src="/libs/seajs-preload.js"></script>
@@ -31,7 +30,8 @@
             form: 'jquery-form/jquery.form.js',
             bootstrap: 'bootstrap/js/bootstrap.js',
             template: 'artTemplate/template-native.js',
-            nprogress: 'nprogress/nprogress.js'
+            nprogress: 'nprogress/nprogress.js',
+            ckeditor:'ckeditor/ckeditor.js'
         },
         // 实现全局模块提前加载
         // 在使用use后才会执行
@@ -40,7 +40,14 @@
     });
 </script>
 {{{block ('script')}}}
-
+<script>
+    //退出
+    $('#logout').on('click',function () {
+        if(confirm('确定退出？')){
+            location.replace('/login');
+        }
+    })
+</script>
 
 </body>
 </html>
