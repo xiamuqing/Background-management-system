@@ -38,3 +38,12 @@ exports.status = function (tc_id,callback) {
     var query = "UPDATE `teacher` SET `tc_status` = 1 WHERE `tc_id` ="+ tc_id;
     db.query(query,callback);
 }
+//用户验证
+exports.authored = function (body,callback) {
+    //用户名和密码
+    var tc_name = body.tc_name;
+    var tc_pass = body.tc_pass;
+
+    var query = 'SELECT * FROM `teacher` WHERE tc_name="'+tc_name+'" AND tc_pass="'+tc_pass+'"';
+    db.query(query,callback);
+}

@@ -8,12 +8,17 @@ define(function (require,exports,module) {
     require('form');
 
     //时间显示
-    var _this=$("input[type='datetime-local']")[0];
-    var localtime=$(_this).attr('time');
-    localtime=localtime.replace(/\s+/g,'T');
-    localtime=localtime.substring(0,16);
-    console.log(localtime);
-    $("input[type='datetime-local']")[0].value=localtime;
+    var inputs=$("input[type='datetime-local']");
+    var localtime;
+    for(var i=0;i<inputs.length;i++){
+        localtime=$(inputs[i]).attr('time');
+        console.log(localtime);
+        if(localtime){
+            localtime=localtime.replace(/\s+/g,'T');
+            localtime=localtime.substring(0,16);
+            inputs[i].value=localtime;
+        }
+    }
 
     $('#addTeacher').validate({
         //何种条件下触发验证（失去焦点）
