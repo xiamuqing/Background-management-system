@@ -33,6 +33,6 @@
 
 {{#block ('script')}}
 <script>
-    seajs.use()
+    seajs.use('/scripts/courses/category_add');
 </script>
 {{/block}}

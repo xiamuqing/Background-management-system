@@ -1,9 +1,5 @@
 {{extend ('../layout/main')}}
 
-{{#block ('style')}}
-<link rel="stylesheet" href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css">
-{{/block}}
-
 {{#block ('content')}}
 <div class="body teacher">
     <!-- 面包屑 -->
