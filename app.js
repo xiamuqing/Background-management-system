@@ -34,29 +34,31 @@ var index = require('./controllers/index');
 var user = require('./controllers/user');
 var teacher = require('./controllers/teacher');
 var login = require('./controllers/login');
+var course = require('./controllers/course');
 
 app.use('/',express.static('public'));
 app.use('/',express.static('uploads'));
 
-app.use(function (req,res,next) {
-    var url = req.originalUrl;
-    var loginfo = req.session.loginfo;
-
-    //app.locals express提供的一个全局的对象
-    //在这个对象的数据可以在任何视图上获得
-    var loginfo = req.session.loginfo;
-    app.locals.loginfo = loginfo;
-
-    if(url !='/login'&& !loginfo){
-        //未登录&当前网页不是login 就跳转
-        res.redirect('/login');
-    }
-    next();
-})
+// app.use(function (req,res,next) {
+//     var url = req.originalUrl;
+//     var loginfo = req.session.loginfo;
+//
+//     //app.locals express提供的一个全局的对象
+//     //在这个对象的数据可以在任何视图上获得
+//     var loginfo = req.session.loginfo;
+//     app.locals.loginfo = loginfo;
+//
+//     if(url !='/login'&& !loginfo){
+//         //未登录&当前网页不是login 就跳转
+//         res.redirect('/login');
+//     }
+//     next();
+// })
 
 app.use('/',index);
 app.use('/user',user);
 app.use('/teacher',teacher);
 app.use('/login',login);
+app.use('/course',course);
 
 app.listen(3000);

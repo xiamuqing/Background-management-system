@@ -3,10 +3,7 @@ define(function (require,exports,module) {
     
     //进度条
     var NProgress = require('nprogress');
-    //下拉菜单伸缩展开
-    $('.navs a[href="javascript:;"]').on('click',function(){
-        $(this).next('ul').slideToggle();
-    })
+ 
     //选中状态
     $('.navs a').each(function(){
         var _this = $(this),

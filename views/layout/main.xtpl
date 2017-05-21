@@ -30,12 +30,14 @@
                     用户管理
                 </a>
             </li>
+            {{#if (!loginfo.tc_type)}}
             <li>
                 <a href="/teacher">
                     <i class="fa fa-bell"></i>
                     讲师管理
                 </a>
             </li>
+            {{/if}}
             <li>
                 <a href="javascript:;">
                     <i class="fa fa-cog"></i>
@@ -56,11 +58,6 @@
                     <li>
                         <a href="/course/category">
                             课程分类
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/course/topic">
-                            课程专题
                         </a>
                     </li>
                 </ul>
