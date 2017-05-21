@@ -32,7 +32,8 @@
             template: 'artTemplate/template-native.js',
             nprogress: 'nprogress/nprogress.js',
             ckeditor:'ckeditor/ckeditor.js',
-            region:'jquery-region/jquery.region'
+            region:'jquery-region/jquery.region',
+            uploadify:'uploadify/jquery.uploadify.js'
         },
         // 实现全局模块提前加载
         // 在使用use后才会执行

@@ -11,6 +11,31 @@ var router = express.Router();
 //暴露模块
 module.exports = router;
 
+var path = require('path');
+var rootPath = path.join(__dirname,'../')
+
+//express图片上传插件
+var multer = require('multer');
+
+// 自定义存储路径
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, rootPath + 'uploads/avatars');
+    },
+    filename: function (req, file, cb) {
+
+        // 原始名 + 时间 + 原始后缀
+        var originalname = file.originalname;
+        var lastIndex = originalname.lastIndexOf('.');
+
+        var filename = originalname.slice(0, lastIndex);
+        var fileExt = originalname.slice(lastIndex);
+
+        cb(null, filename + '-' + Date.now() + fileExt);
+    }
+})
+
+var upload = multer({ storage: storage });
 
 //首页
 router.get('/',function (req,res) {
@@ -48,4 +73,19 @@ router.get('/repass',function (req,res) {
 
 router.get('/region',function (req,res) {
     res.json(region);
+})
+
+//上传头像
+router.post('/upfile', upload.single('tc_avatar'),function (req,res) {
+  //  console.log(req.file);
+   // res.send('上传头像');
+    var body = {
+        tc_id: req.session.loginfo.tc_id,
+        tc_avatar: req.file.filename
+    }
+    //保存头像
+    tcModal.edit(body,function (err,resykt) {
+        if(err) return;
+        res.json(req.file);
+    })
 })

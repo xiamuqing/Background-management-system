@@ -5,9 +5,14 @@ define(function (require,exports,module) {
     var ckeditor = require('ckeditor');
     ckeditor.replace('teacherIntroduce');
 
+    //县市插件
     var region = require('region');
 
     require('form');
+
+    //文件上传插件
+    require('uploadify');
+
 
     //时间显示
     var inputs=$("input[type='datetime-local']");
@@ -46,4 +51,17 @@ define(function (require,exports,module) {
         return false;
     })
 
+    $('#upfile').uploadify({
+        buttonText:'',
+        height:'120px',
+        fileObjName:'tc_avatar',
+        swf:'/assets/uploadify/uploadify.swf',//flash文件
+        uploader:'/upfile',//后台接口,
+        itemTemplate:'<span></span>',
+        onUploadSuccess: function(file, data, response) {
+            var data = JSON.parse(data);
+            $('.preview img').attr('src','/avatars/'+data.filename);
+            console.log(data);
+        }
+    })
 })
