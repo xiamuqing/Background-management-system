@@ -23,8 +23,9 @@ define(function (require,exports,module) {
 
         },
         valid:function () {
+            var url = $(this).attr('action').trim();
             $(this).ajaxSubmit({
-                url:'/course/category/add',
+                url:url,
                 type:'post',
                 success:function (data) {
                     alert(data.msg);

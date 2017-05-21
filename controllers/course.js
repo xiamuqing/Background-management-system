@@ -39,3 +39,37 @@ router.post('/category/add',function (req,res) {
         })
     });
 })
+
+//编辑 :表示参数
+router.get('/category/edit/:cg_id',function (req,res) {
+    var cg_id = req.params.cg_id;
+
+    //调用模型查询讲师信息
+    cgModel.find(cg_id,function (err,result) {
+        if(err) return;
+        //取分类
+        cgModel.show(function (err,resultClass) {
+            if(err) return;
+            res.render('courses/category_add',{category:result[0],categorys:resultClass});
+        })
+    });
+
+})
+
+//编辑
+router.post('/category/edit',function (req,res) {
+    //post数据
+   // console.log(req.body);
+    var body = req.body;
+    //调用数据 更新至数据库
+    cgModel.edit(body,function (err,result) {
+        if(err) return ;
+        //成功后返回前台一个json
+        res.json({
+            code:200,
+            msg:'修改成功',
+            result:{}
+        });
+    });
+
+})

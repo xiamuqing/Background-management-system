@@ -14,3 +14,15 @@ exports.list = function (callback) {
     var query = 'SELECT * FROM  `category`';
     db.query(query,callback);
 }
+exports.edit = function (body,callback) {
+    var cg_id = body.cg_id;
+    delete cg_id;
+    var query = 'UPDATE `category` SET ? WHERE `cg_id` ='+ cg_id;
+
+    db.query(query,body,callback);
+}
+
+//查询数据
+exports.find = function (cg_id,callback) {
+    db.query('SELECT * FROM `category` WHERE cg_id = '+cg_id,callback);
+}
