@@ -28,6 +28,19 @@ router.get('/settings',function(req,res){
     });
 })
 
+router.post('/update',function(req,res){
+    //更新数据
+    tcModal.edit(req.body,function (err,result) {
+        if(err)  return;
+        res.json({
+            code:200,
+            msg:'设置成功！',
+            result:{}
+        })
+    })
+    
+})
+
 //修改密码
 router.get('/repass',function (req,res) {
     res.render('dashboard/repass',{})

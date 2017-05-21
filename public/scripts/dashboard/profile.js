@@ -7,6 +7,8 @@ define(function (require,exports,module) {
 
     var region = require('region');
 
+    require('form');
+
     //时间显示
     var inputs=$("input[type='datetime-local']");
     var localtime;
@@ -26,6 +28,22 @@ define(function (require,exports,module) {
     })
 
     //提交表单数据
-    
+    $('#updateTeacher').on('submit',function () {
+        // 提交ckeditor数据
+        for(instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+        $(this).ajaxSubmit({
+            url:'/update',
+            type:'post',
+            success:function (data) {
+                alert(data.msg);
+                if(data.code==200){
+                    location.reload();
+                }
+            }
+        })
+        return false;
+    })
 
 })

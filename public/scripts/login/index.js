@@ -7,7 +7,7 @@ define(function(require,exports,module){
             url:'/login',
             type:'post',
             success:function (data) {
-                alert(data.msg);
+               alert(data.msg);
                if(data.code == 200){
                    location.href = '/'
                }

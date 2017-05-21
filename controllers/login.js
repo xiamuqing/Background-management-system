@@ -14,14 +14,22 @@ router.get('/',function (req,res) {
 router.post('/',function (req,res) {
     var body = req.body;
     tcModel.authored(body,function (err,result) {
-        if(err) console.log(err);
-
+        if(err) return;
         //记录登录状态
         req.session.loginfo = result[0];
-        res.json({
-            code:200,
-            msg:'登录成功！',
-            result:{}
-        });
+        if(result[0]){
+            res.json({
+                code:200,
+                msg:'登录成功！',
+                result:{}
+            });
+        }else{
+            res.json({
+                code:201,
+                msg:'登录失败！',
+                result:{}
+            });
+        }
+        
     })
 })
