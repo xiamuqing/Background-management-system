@@ -71,6 +71,18 @@ router.get('/repass',function (req,res) {
     res.render('dashboard/repass',{})
 })
 
+router.post('/repass',function (req,res) {
+    console.log('进来了！')
+    tcModal.repass(req.body,function (err,result) {
+        if(err)  return;
+        res.json({
+            code:200,
+            msg:'修改密码成功！',
+            result:{}
+        })
+    })
+})
+
 router.get('/region',function (req,res) {
     res.json(region);
 })

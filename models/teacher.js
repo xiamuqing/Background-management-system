@@ -49,3 +49,14 @@ exports.authored = function (body,callback) {
     var query = 'SELECT * FROM `teacher` WHERE tc_name="'+tc_name+'" AND tc_pass="'+tc_pass+'"';
     db.query(query,callback);
 }
+
+//修改密码
+exports.repass = function (body,callback) {
+    console.log(body)
+    var tc_id = body.tc_id;
+    delete tc_id;
+    var tc_pass = body.tc_pass;
+    var newpass = body.newpass;
+    var query = 'UPDATE `teacher` SET `tc_pass` = "'+newpass+'"  WHERE `tc_id` ="'+tc_id +'"  AND tc_pass= "'+tc_pass+'"' ;
+    db.query(query,body,callback);
+}
