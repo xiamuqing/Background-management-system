@@ -72,7 +72,6 @@ router.get('/repass',function (req,res) {
 })
 
 router.post('/repass',function (req,res) {
-    console.log('进来了！')
     tcModal.repass(req.body,function (err,result) {
         if(err)  return;
         res.json({
