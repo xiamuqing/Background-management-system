@@ -38,10 +38,10 @@
                 <div class="form-group">
                     <label for="" class="col-md-4 control-label">是否显示</label>
                     <div class="col-md-3">
-                        <label class="checkbox-inline">
+                        <label class="radio-inline">
                             <input type="radio"  name="cg_is_hide" value="0" {{#if (category.cg_is_hide === 0)}} checked {{/if}}> 是
                         </label>
-                        <label class="checkbox-inline">
+                        <label class="radio-inline">
                             <input type="radio"  name="cg_is_hide" value="1" {{#if (category.cg_is_hide === 1)}} checked {{/if}}> 否
                         </label>
                     </div>

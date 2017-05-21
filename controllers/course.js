@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 //分类模型
-var  cgModel = require('../models/category');
+var cgModel = require('../models/category');
 module.exports = router;
+
+//课程模型
+var csModel = require('../models/course');
 
 var common = require('../utils/common')
 
@@ -72,4 +75,22 @@ router.post('/category/edit',function (req,res) {
         });
     });
 
+})
+
+router.post('/add',function (req,res) {
+    //调用模型添加数据
+    csModel.add(req.body,function (err,result) {
+        if(err) return;
+        res.json({
+           code:200,
+            msg:'添加成功',
+            result:{
+                insertId:result.insertId
+            }
+        });
+    })
+})
+
+router.get('/basic/:cs_id',function (req,res) {
+    res.render('courses/basic');
 })
