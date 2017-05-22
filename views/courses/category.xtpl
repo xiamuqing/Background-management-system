@@ -6,11 +6,9 @@
 					<li><a href="javascript:;">课程管理</a></li>
 					<li class="active">课程分类</li>
 				</ol>
-                {{#if (!loginfo.tc_type)}}
 				<div class="page-title">
 					<a href="/course/category/add" class="btn btn-success btn-sm pull-right">添加分类</a>
 				</div>
-                {{/if}}
 				<div class="panel panel-default">
 					<table class="table table-bordered">
 						<thead>

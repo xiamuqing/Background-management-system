@@ -26,3 +26,14 @@ exports.edit = function (body,callback) {
 exports.find = function (cg_id,callback) {
     db.query('SELECT * FROM `category` WHERE cg_id = '+cg_id,callback);
 }
+
+exports.getParent = function (cs_cg_id, callback) {
+
+    var query = 'SELECT * FROM `category` WHERE `cg_pid`=0 UNION SELECT * FROM `category` WHERE `cg_pid`=(SELECT `cg_pid` FROM `category` WHERE `cg_id`=' + cs_cg_id + ')';
+
+    db.query(query, callback);
+}
+exports.getChild = function (cg_id,callback) {
+    var query = 'SELECT * FROM `category` WHERE `cg_pid`='+cg_id;
+    db.query(query,callback);
+}
