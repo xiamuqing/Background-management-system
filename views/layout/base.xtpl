@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="/assets/nprogress/nprogress.css">
     <link rel="stylesheet" href="/less/index.css">
+    {{{block ('style')}}}
 </head>
 <body>
 
@@ -33,7 +34,8 @@
             nprogress: 'nprogress/nprogress.js',
             ckeditor:'ckeditor/ckeditor.js',
             region:'jquery-region/jquery.region',
-            uploadify:'uploadify/jquery.uploadify.js'
+            uploadify:'uploadify/jquery.uploadify.js',
+            Jcrop:'Jcrop/js/Jcrop.js'
         },
         // 实现全局模块提前加载
         // 在使用use后才会执行

@@ -1,9 +1,32 @@
 var express = require('express');
 var router = express.Router();
 
+var path = require('path');
+
+var rootPath = path.join(__dirname,'../')
+
 //分类模型
 var cgModel = require('../models/category');
 module.exports = router;
+
+//express上传文件插件
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, rootPath + 'uploads/original');
+    },
+    filename: function (req, file, cb) {
+
+        var originalname = file.originalname;
+
+        var fileName = originalname.slice(0, originalname.lastIndexOf('.'))
+        var fileExt = originalname.slice(originalname.lastIndexOf('.'));
+
+        cb(null, fileName + '-' + Date.now() + fileExt);
+    }
+})
+
+var upload = multer({ storage: storage });
 
 //课程模型
 var csModel = require('../models/course');
@@ -160,7 +183,15 @@ router.post('/basic', function (req, res) {
 
 //添加封面图
 router.get('/picture/:cs_id', function (req, res) {
-    res.render('courses/picture');
+    var cs_id = req.params.cs_id;
+    csModel.find(cs_id,function (err,result) {
+        if(err) return;
+        var tc_id = result[0]['cs_tc_id'];
+        tcModel.find(tc_id,function (err,rows) {
+            if(err) return;
+            res.render('courses/picture',{course:result[0],teacher:rows[0]});
+        })
+    })
 })
 
 //子分类
@@ -174,4 +205,58 @@ router.post('/getChild', function (req, res) {
             result:result
         })
     })
+})
+
+//上传图片
+router.post('/upfile', upload.single('upfile'), function (req, res) {
+//upload.single中间件把上传结果返回在req
+    //将原始图片存入数据库
+    var body = {
+        cs_cover_original:req.file.filename,
+        cs_id:req.body.cs_id
+    }
+    csModel.update(body,function (err,result) {
+        if(err) return;
+        res.json(req.file);
+    });
+
+});
+
+//裁切图片
+router.post('/crop', function (req, res) {
+    // 接收参数
+    // 调用裁切工具
+    // 将裁切好的图片存到数据库
+    var x = req.body.x,
+        y = req.body.y,
+        w = req.body.w;
+    h = req.body.h;
+    filename = req.body.cs_cover_original;
+    // 调用裁切方法
+    common.crop(x, y, w, h, filename, function (path) {
+        // 裁切完成后入库
+        var body = {
+            cs_cover: path,
+            cs_id: req.body.cs_id
+        }
+        // 入库
+        csModel.update(body, function (err, result) {
+            if(err) return;
+            res.json({
+                code: 200,
+                msg: '裁切成功!',
+                result: {
+                    cs_id: req.body.cs_id
+                }
+            })
+        });
+
+    });
+
+});
+
+
+//添加课时
+router.get('/lesson/:cs_id', function (req, res) {
+    res.render('courses/lesson');
 })

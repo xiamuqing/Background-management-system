@@ -1,5 +1,9 @@
 {{extend ('../layout/main')}}
 
+{{#block ('style')}}
+<link rel="stylesheet" href="/assets/Jcrop/css/Jcrop.css">
+{{/block}}
+
 {{#block ('content')}}
 			<div class="body course-add">
 				<!-- 面包屑 -->
@@ -11,12 +15,11 @@
 					<!-- 摘要 -->
 					<div class="brief">
 						<div class="thumb">
-							<img src="./uploads/course_1.jpg" alt="">
+							<img src="/thumbs/{{course.cs_cover}}" alt="">
 						</div>
 						<dl class="info">
-							<dt>Git 指南</dt>
-							<dd>讲师：李鹏周</dd>
-							<dd>课时：32</dd>
+							<dt>{{course.cs_name}}</dt>
+							<dd>讲师：{{teacher.tc_name}}</dd>
 						</dl>
 					</div>
 					<!-- 步聚 -->
@@ -49,17 +52,29 @@
 						<!-- 上传图片 -->
 						<div class="picture col-md-offset-2">
 							<div class="preview">
-								<img src="./uploads/course.png" alt="">
+								<img src="/original/{{course.cs_cover_original}}" alt="">
 							</div>
 							<p class="tips">
 								可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
 							</p>
 							<div class="col-md-2">
-								<a href="./course_add_step3.html" class="btn btn-success btn-sm">选择图片</a>
+								<a href="javascript:;" id="upfile">选择图片</a>
 							</div>
 							<div class="col-md-2">
-								<a href="javascript:;" class="btn btn-warning btn-sm" disabled>裁切图片</a>
+                                {{#if (course.cs_cover_original)}}
+                                <input type="button" value="裁切图片" class="btn btn-warning btn-sm"  id="cutBtn" data-status="cut">
+                                {{else}}
+                                <input type="button" value="裁切图片" class="btn btn-warning btn-sm"  id="cutBtn" disabled>
+                                {{/if}}
 							</div>
+                            <form id="coords" style="display: none;">
+                                <input type="hidden" name="x" id="x">
+                                <input type="hidden" name="y" id="y">
+                                <input type="hidden" name="w" id="w">
+                                <input type="hidden" name="h" id="h">
+                                <input type="hidden" id="csId" name="cs_id" value="{{course.cs_id}}">
+                                <input type="hidden" name="cs_cover_original" value="{{course.cs_cover_original}}" id="cover">
+                            </form>
 						</div>
 					</div>
 				</div>

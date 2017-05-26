@@ -2,8 +2,17 @@ define(function (require,exports,module) {
     var $ = require('jquery');
     require('form');
 
+    //富文本框
+    var ckeditor = require('ckeditor');
+    ckeditor.replace('courseBrief');
+
+
     //提交表单
     $('#basicCourse').on('submit',function () {
+        // 提交ckeditor数据
+        for(instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
         $(this).ajaxSubmit({
             url:'/course/basic',
             type:'post',

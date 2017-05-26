@@ -10,9 +10,9 @@
 		</ol>
 		<div class="profile">
 			<div class="pull-left">
-				<img src="./uploads/default.jpg" class="img-circle pull-left" alt="">
-				<span class="name">令狐冲</span>
-				<span>一见尼姑，逢赌必输！</span>
+				<img src="/default.jpg" class="img-circle pull-left" alt="">
+				<span class="name">夏木青</span>
+				<span>好好学习，天天向上！</span>
 			</div>
 			<ul class="pull-right list-inline">
 				<li>
@@ -43,7 +43,7 @@
 			</ul>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_1.jpg" alt="">
+					<img src="/course_1.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -53,7 +53,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_2.jpg" alt="">
+					<img src="/course_2.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -63,7 +63,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_3.jpg" alt="">
+					<img src="/course_3.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -73,7 +73,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_4.jpg" alt="">
+					<img src="/course_4.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -83,7 +83,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_1.jpg" alt="">
+					<img src="/course_1.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -93,7 +93,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_2.jpg" alt="">
+					<img src="/course_2.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -103,7 +103,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_3.jpg" alt="">
+					<img src="/course_3.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
@@ -113,7 +113,7 @@
 			</div>
 			<div class="course">
 				<div class="pic">
-					<img src="./uploads/course_4.jpg" alt="">
+					<img src="/course_4.jpg" alt="">
 					<span class="percent">100%</span>
 				</div>
 				<div class="info">
