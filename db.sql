@@ -66,14 +66,3 @@ CREATE TABLE `lesson` (
   PRIMARY KEY (`ls_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='课时表';
 
-
--- 课时表
-DROP TABLE IF EXISTS `user_to_course`;
-CREATE TABLE `user_to_course` (
-  `utc_id` int(11) NOT NULL AUTO_INCREMENT,
-  `utc_cs_id` int(11) NOT NULL DEFAULT '0' COMMENT '课程ID',
-  `utc_us_id` int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `utc_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
-  PRIMARY KEY (`utc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户课程关联表';
-

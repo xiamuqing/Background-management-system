@@ -43,8 +43,13 @@ router.get('/add',function (req,res) {
     res.render('courses/add');
 })
 
+//课程列表
 router.get('/list',function (req,res) {
-    res.render('courses/list');
+    //取出所有课程
+    csModel.list(function (err,result) {
+        if(err) return;
+        res.render('courses/list',{courses:result});
+    }) 
 })
 router.get('/category',function (req,res) {
     //查询所有分类

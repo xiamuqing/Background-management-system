@@ -16,3 +16,10 @@ exports.update = function (body,callback) {
     delete body.cs_id;
     db.query('UPDATE  `course` SET ? WHERE cs_id = '+cs_id,body,callback);
 }
+
+exports.list = function (callback) {
+    //连表查询
+    var query = 'SELECT * FROM `course` AS cs LEFT JOIN `teacher` AS tc ON cs.cs_tc_id= tc.tc_id LEFT JOIN `category` AS cg ON cs.cs_cg_id= cg.cg_id';
+
+    db.query(query,callback);
+}

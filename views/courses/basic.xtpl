@@ -11,12 +11,10 @@
             <!-- 摘要 -->
             <div class="brief">
                 <div class="thumb">
-                    <img src="{{course.cs_cover}}" alt="">
+                    <img src="/thumbs/{{course.cs_cover}}" alt="">
                 </div>
                 <dl class="info">
                     <dt>{{course.cs_name}}</dt>
-                    <!--<dd>讲师：李鹏周</dd>-->
-                    <!--<dd>课时：32</dd>-->
                 </dl>
             </div>
             <!-- 步聚 -->

@@ -17,7 +17,7 @@ exports.add = function (body, callback) {
 
 
 exports.find = function (ls_cs_id,callback) {
-    var query = 'SELECT * FROM `lesson` WHERE `ls_cs_id` = '+ls_cs_id +'ORDER BY `ls_id`';
+    var query = 'SELECT * FROM `lesson` WHERE `ls_cs_id` = '+ls_cs_id +' ORDER BY ls_id';
     db.query(query,callback);
 }
 exports.show = function (ls_id,callback) {
