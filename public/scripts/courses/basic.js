@@ -18,7 +18,7 @@ define(function (require,exports,module) {
             type:'post',
             success:function (data) {
                 if(data.code ==200){
-                    location.href = '/course/picture/'+data.result.cs_id;
+                    location.href = '/course/picture/' + data.result.cs_id;
                 }
 
             }

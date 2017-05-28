@@ -40,7 +40,7 @@ define(function (require,exports,module) {
                     success:function (info) {
                         if(info.code == 200){
                             alert(info.msg);
-                            self.location=document.referrer;
+                          //  self.location=document.referrer;
                         }else{
                             alert('原始密码错误');
                         }

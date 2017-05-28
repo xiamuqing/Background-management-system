@@ -176,6 +176,7 @@ router.get('/basic/:cs_id', function (req, res) {
 
 router.post('/basic', function (req, res) {
     console.log(req.body);
+    var cs_id = req.body.cs_id;
     //调用模型添加数据
     csModel.update(req.body,function (err,result) {
         if(err) return;
@@ -183,10 +184,11 @@ router.post('/basic', function (req, res) {
             code:'200',
             msg:'完善信息成功',
             result:{
-                cs_id:req.body.cs_id
+                cs_id:cs_id
             }
         })
     })
+    
 })
 
 //添加封面图
@@ -328,7 +330,19 @@ router.post('/lesson/delete',function (req,res) {
         if(err) return;
         res.json({
             code:200,
-            info:'删除成功！'
+            info:'删除成功！',
+        });
+    });
+})
+
+//搜索课程
+router.post('/search',function (req,res) {
+    var cs_name =  req.body.cs_name;
+    console.log(cs_name);
+    csModel.search(cs_name,function (err,result) {
+        if(err) return;
+        res.json({
+            result:result
         });
     });
 })

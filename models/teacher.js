@@ -21,7 +21,7 @@ exports.edit = function (body,callback) {
 
 //查询所有数据
 exports.show = function (callback) {
-    db.query('SELECT * FROM `teacher` ',callback);
+    db.query('SELECT * FROM `teacher`',callback);
 }
 
 //查询当数据

@@ -10,7 +10,7 @@
 				<div class="courses">
 					<!-- 搜索 -->
 					<div class="search">
-						<form action="" class="form-inline">
+						<form action="" class="form-inline" id="cSearchForm">
 							<select name="" class="form-control input-sm">
 								<option value="">按年龄</option>
 							</select>
@@ -25,40 +25,39 @@
 							</select>
 							<button class="btn btn-success btn-sm">筛选</button>
 							<div class="input-group pull-right">
-								<input type="text" class="form-control input-sm">
+								<input type="text" class="form-control input-sm" name="cs_name">
 								<span class="input-group-btn">
-									<button class="btn btn-success btn-sm">搜索</button>
+									<button class="btn btn-success btn-sm" type="submit">搜 索</button>
 								</span>
 							</div>
 						</form>
 					</div>
-                    {{#each (courses)}}
-					<div class="course">
-						<div class="pic">
-                            {{#if (this.cs_cover)}}
-							<img src="/thumbs/{{this.cs_cover}}" alt="">
-                            {{ else}}
-                            <img src="/course.png" alt="">
-                            {{/if}}
-						</div>
-						<div class="info">
-							<a href="/course/basic/{{this.cs_id}}">{{this.cs_name}}</a>
-							<ul class="list-unstyled">
-								<li>
-									<span>讲师：{{this.tc_name}}</span>
-									<span>类别：{{this.cg_name}}</span>
-								</li>
-								<li>
-									<span>课时：</span>
-								</li>
-								<li>
-									<span>浏览：</span>
-									<span></span>
-								</li>
-							</ul>
-						</div>
-					</div>
-                    {{/each}}
+                    <div id="Csbody">
+                        {{#each (courses)}}
+                        <div class="course">
+                            <div class="pic">
+                                {{#if (this.cs_cover)}}
+                                <img src="/thumbs/{{this.cs_cover}}" alt="">
+                                {{ else}}
+                                <img src="/course.png" alt="">
+                                {{/if}}
+                            </div>
+                            <div class="info">
+                                <a href="/course/basic/{{this.cs_id}}">{{this.cs_name}}</a>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <span>讲师：{{this.tc_name}}</span>
+                                        <span>类别：{{this.cg_name}}</span>
+                                    </li>
+                                    <li>
+                                        <span>浏览：</span>
+                                        <span></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
 				</div>
 				<!-- 分页 -->
 				<ul class="pagination pull-right">
@@ -74,6 +73,6 @@
 {{/block}}
 {{#block ('script')}}
 	<script>
-		seajs.use();
+        seajs.use('/scripts/courses/lesson');
 	</script>
 {{/block}}

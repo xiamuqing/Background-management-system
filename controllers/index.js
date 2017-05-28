@@ -77,7 +77,7 @@ router.post('/repass',function (req,res) {
         res.json({
             code:200,
             msg:'修改密码成功！',
-            result:{}
+            result:result
         })
     })
 })

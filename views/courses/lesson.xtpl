@@ -113,7 +113,7 @@
 
 <script type="text/template" id="lessonTpl">
     <input type="hidden" name="ls_cs_id" value="{{course.cs_id}}">
-    <input type="hidden" name="ls_id" value="<% ls_id%>">
+    <input type="hidden" name="ls_id" value="<%= ls_id%>">
     <div class="form-group">
         <label for="" class="col-md-2 control-label">标题</label>
         <div class="col-md-6">
@@ -141,10 +141,7 @@
         <label for="" class="col-md-2 control-label">视频</label>
         <div class="col-md-8">
             <div class="input-group">
-                <input type="text" name="ls_video" class="form-control input-sm"value="<%= ls_video%>" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入">
-                    <span class="input-group-btn">
-                        <button class="btn btn-success btn-sm">获取</button>
-                    </span>
+                <input type="text" name="ls_video" class="form-control input-sm"value="<%= ls_video%>" placeholder="视频页面地址">
             </div>
         </div>
     </div>

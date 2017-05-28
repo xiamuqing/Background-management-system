@@ -23,3 +23,10 @@ exports.list = function (callback) {
 
     db.query(query,callback);
 }
+
+//搜索课程
+exports.search = function (cs_name,callback) {
+    var query = "SELECT * FROM `course` AS cs LEFT JOIN `teacher` AS tc ON cs.cs_tc_id= tc.tc_id LEFT JOIN `category` AS cg ON cs.cs_cg_id= cg.cg_id WHERE cs_name LIKE '%"+cs_name+"%'";
+
+    db.query(query,callback);
+}

@@ -30,7 +30,7 @@ define(function (require,exports,module) {
                 success:function (data) {
                     alert(data.msg);
                     if(data.code ==200){
-                        location.reload();
+                        location.href='/course/category/';
                     }
                 }
             })
