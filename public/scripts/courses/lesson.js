@@ -39,27 +39,29 @@ define(function (require,exports,module) {
             type:'post',
             success:function (data) {
                 // console.log(data);
-                //添加成功红，需要展示型添加数据
-                var info = {
-                    index:size,
-                    lsName:lsName,
-                    lsDuration:lsMinutes+':'+lsSeconds,
-                }
-                //调用模板
-                var html = template('itemTpl',info);
-                if(key){
-                    //替换
-                    item.find('li').eq(key).find('span.name').text(lsName);
-                    item.find('li').eq(key).find('span.duration').text(lsMinutes+':'+lsSeconds );
-                }else{
-                    //添加dom
-                    item.append(html);
-                }
-
-                //总课时
-                total.text('课时：'+size);
-                //模态框消失
-                lessonModal.modal('hide');
+                //添加成功后，需要展示型添加数据
+                // var info = {
+                //     index:size,
+                //     lsName:lsName,
+                //     lsDuration:lsMinutes+':'+lsSeconds,
+                //
+                // }
+                // //调用模板
+                // var html = template('itemTpl',info);
+                // if(key){
+                //     //替换
+                //     item.find('li').eq(key).find('span.name').text(lsName);
+                //     item.find('li').eq(key).find('span.duration').text(lsMinutes+':'+lsSeconds );
+                // }else{
+                //     //添加dom
+                //     item.append(html);
+                // }
+                //
+                // //总课时
+                // total.text('课时：'+size);
+                // //模态框消失
+                // lessonModal.modal('hide');
+                location.reload();
             }
         })
 
@@ -89,7 +91,21 @@ define(function (require,exports,module) {
                 }
             })
         }
-        if(_this.is('.delete')){ alert('删除')}
+        if(_this.is('.delete')){
+           if(confirm('确定删除该课程吗？')){
+               $.ajax({
+                   url:'/course/lesson/delete',
+                   type:'post',
+                   data:{ls_id:ls_id},
+                   success:function (data) {
+                       if(data.code==200){
+                           alert(data.info)
+                           location.reload();
+                       }
+                   }
+               })
+           }
+        }
     });
 
 })

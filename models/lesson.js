@@ -24,3 +24,8 @@ exports.show = function (ls_id,callback) {
     var query = 'SELECT * FROM `lesson` WHERE `ls_id` = '+ls_id;
     db.query(query,callback);
 }
+
+exports.delete = function (ls_id,callback) {
+    var query = 'DELETE FROM `lesson` WHERE `ls_id` = '+ls_id;
+    db.query(query,callback);
+}

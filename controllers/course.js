@@ -320,3 +320,15 @@ router.post('/lesson/edit',function (req,res) {
         res.json(result[0]);
     });
 })
+
+//删除课时
+router.post('/lesson/delete',function (req,res) {
+    var ls_id = req.body.ls_id;
+    lsModel.delete(ls_id,function (err,result) {
+        if(err) return;
+        res.json({
+            code:200,
+            info:'删除成功！'
+        });
+    });
+})
