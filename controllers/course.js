@@ -36,6 +36,9 @@ var common = require('../utils/common')
 //讲师模型
 var tcModel = require('../models/teacher');
 
+//课s时间模型
+var lsModel = require('../models/lesson');
+
 router.get('/add',function (req,res) {
     res.render('courses/add');
 })
@@ -255,8 +258,60 @@ router.post('/crop', function (req, res) {
 
 });
 
-
 //添加课时
 router.get('/lesson/:cs_id', function (req, res) {
-    res.render('courses/lesson');
+    //根据ID 获取课程
+    var cs_id = req.params.cs_id;
+
+    var data = {};
+
+    csModel.find(cs_id,function (err,result) {
+        if(err) return;
+        //查询课程信息
+        data.course = result[0];
+        var cs_tc_id = result[0].cs_tc_id;
+        tcModel.find(cs_tc_id,function (err,row) {
+            if(err) return;
+            //讲师信息
+            data.teacher = row[0];
+            var ls_cs_id = cs_id;
+            //课时信息
+            lsModel.find(ls_cs_id,function (err,lesson) {
+                if(err) return;
+                data.lesson = lesson;
+                res.render('courses/lesson',data);
+            })
+        });
+    })
+})
+
+//添加课时
+router.post('/lesson',function (req,res) {
+   // console.log(req.body);
+    //将接收的数据添加到数据库
+
+    var ls_minutes = req.body.ls_minutes;
+    var ls_seconds = req.body.ls_seconds;
+    
+    req.body.ls_video_duration = ls_minutes+':'+ls_seconds;
+
+    delete  req.body.ls_minutes;
+    delete  req.body.ls_seconds;
+
+    lsModel.add(req.body,function (err,result) {
+        if(err) return;
+        
+    })
+
+    res.send('11');
+})
+
+//编辑课时
+router.post('/lesson/edit',function (req,res) {
+    var ls_id = req.body.ls_id;
+    lsModel.show(ls_id,function (err,result) {
+        if(err) return;
+
+        res.json(result[0]);
+    });
 })
