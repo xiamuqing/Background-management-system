@@ -81,7 +81,7 @@ router.post('/category/add',function (req,res) {
 router.get('/category/edit/:cg_id',function (req,res) {
     var cg_id = req.params.cg_id;
 
-    //调用模型查询讲师信息
+    //调用模型查询分类信息
     cgModel.find(cg_id,function (err,result) {
         if(err) return;
         //取分类
