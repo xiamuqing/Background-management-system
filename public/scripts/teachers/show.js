@@ -20,6 +20,10 @@ define(function (require,exports,module) {
                teacherModal.find('table').html('');
                teacherModal.find('table').append(html);
                teacherModal.modal();
+               //富文本框
+               var ckeditor = require('ckeditor');
+               ckeditor.replace('introduce',{toolbarCanCollapse: true, toolbarStartupExpanded: false});
+
            }
        })
         //阻止默认行为

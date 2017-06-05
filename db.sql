@@ -29,7 +29,6 @@ CREATE TABLE `category` (
   `cg_id` int(11) NOT NULL AUTO_INCREMENT,
   `cg_pid` int(11) NOT NULL DEFAULT '0' COMMENT '父级ID',
   `cg_name` varchar(16) NOT NULL DEFAULT '' COMMENT '分类名称',
-  `cg_order` int(11) NOT NULL DEFAULT '10' COMMENT '排序',
   `cg_is_hide` tinyint(2) NOT NULL DEFAULT 0 COMMENT '是否隐藏',
   `cg_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`cg_id`)

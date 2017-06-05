@@ -49,7 +49,7 @@
 								<td>{{this.tc_cellphone}}</td>
 								<td>
 									<a href="javascript:;" data-toggle="modal" class="btn btn-info btn-xs preview" tcid="{{this.tc_id}}" >查 看</a>
-									<a href="/teacher/edit/{{this.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
+									<a href="/teacher/edit/{{this.tc_id}}" class="btn btn-info btn-xs">修 改</a>
                                     {{#if (this.tc_status === 0)}}
 									<a href="javascript:;" class="btn btn-warning btn-xs Tstate" tcid="{{this.tc_id}}">注 销</a>
                                     {{else}}
@@ -122,12 +122,9 @@
             <th>邮箱:</th><td colspan="2"><%= tc_email %></td>
         </tr>
         <tr>
-            <th>籍贯:</th><td colspan="6"><%= tc_province %> <%= tc_city %> <%= tc_district %></td>
-        </tr>
-        <tr>
             <td colspan="7">
-                <div class="introduce">
-                    <%= tc_introduce %>
+                <div class="introduce" >
+                    <textarea id="introduce" disabled="disabled"><%= tc_introduce %></textarea>
                 </div>
             </td>
         </tr>

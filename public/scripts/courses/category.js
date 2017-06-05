@@ -36,4 +36,20 @@ define(function (require,exports,module) {
             })
         }
     })
+
+    //分类
+    // $('#ckbox').on('click',function () {
+    //     console.log($('#selectCg').val())
+    //     if($(this).is(':checked')){
+    //         //选中
+    //         $('#selectCg').attr('disabled','true');
+    //         $('#selectCg').val(0);
+    //     }else{
+    //         $('#selectCg').removeAttr('disabled');
+    //
+    //     }
+    // })
+ 
+
+
 })

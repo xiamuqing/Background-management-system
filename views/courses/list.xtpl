@@ -12,16 +12,10 @@
 					<div class="search">
 						<form action="" class="form-inline" id="cSearchForm">
 							<select name="" class="form-control input-sm">
-								<option value="">按年龄</option>
+								<option value="">按类别</option>
 							</select>
 							<select name="" class="form-control input-sm">
-								<option value="">按性别</option>
-							</select>
-							<select name="" class="form-control input-sm">
-								<option value="">按地区</option>
-							</select>
-							<select name="" class="form-control input-sm">
-								<option value="">按日期</option>
+								<option value="">按人气</option>
 							</select>
 							<button class="btn btn-success btn-sm">筛选</button>
 							<div class="input-group pull-right">

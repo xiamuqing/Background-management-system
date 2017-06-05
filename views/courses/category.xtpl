@@ -14,7 +14,6 @@
 						<thead>
 							<tr>
 								<th width="18%">分类名称</th>
-								<th>课程数量</th>
 								<th>显示</th>
 								<th>操作</th>
 							</tr>
@@ -23,16 +22,14 @@
                             {{#each (categorys)}}
 							<tr class="active">
 								<td class="text-left">{{this.cg_name}}</td>
-								<td>12</td>
 								<td>是</td>
 								<td>
-									<a href="/course/category/edit/{{this.cg_id}}" class="btn btn-info btn-xs">编辑</a>
+									<a href="/course/category/edit/{{this.cg_id}}" class="btn btn-info btn-xs">修改</a>
 								</td>
 							</tr>
                                 {{#each (this.childs)}}
                                 <tr>
                                     <td class="text-left">&nbsp;&nbsp;├ {{this.cg_name}}</td>
-                                    <td>12</td>
                                     <td>是</td>
                                     <td>
                                         <a href="/course/category/edit/{{this.cg_id}}" class="btn btn-info btn-xs">编辑</a>

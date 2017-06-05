@@ -27,7 +27,7 @@
             <li>
                 <a href="/user">
                     <i class="fa fa-bell"></i>
-                    用户管理
+                   学员管理
                 </a>
             </li>
             {{#if (!loginfo.tc_type)}}
@@ -45,21 +45,25 @@
                     <i class="arrow fa fa-angle-right"></i>
                 </a>
                 <ul class="list-unstyled">
+                    {{#if (!loginfo.tc_type)}}
                     <li>
                         <a href="/course/add">
                             课程添加
                         </a>
                     </li>
+                    {{/if}}
                     <li>
                         <a href="/course/list">
                             课程列表
                         </a>
                     </li>
+                    {{#if (!loginfo.tc_type)}}
                     <li>
                         <a href="/course/category">
                             课程分类
                         </a>
                     </li>
+                    {{/if}}
                 </ul>
             </li>
         </ul>
