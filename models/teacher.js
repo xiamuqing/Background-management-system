@@ -23,6 +23,10 @@ exports.edit = function (body,callback) {
 exports.show = function (callback) {
     db.query('SELECT * FROM `teacher`',callback);
 }
+//查询所有未注销的讲师
+exports.staus = function (callback) {
+    db.query('SELECT * FROM `teacher` WHERE tc_status = 0 AND tc_type = 1',callback);
+}
 
 //查询当数据
 exports.find = function (tc_id,callback) {

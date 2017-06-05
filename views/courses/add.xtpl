@@ -19,6 +19,16 @@
                         <input type="text" name="cs_name" class="form-control input-sm" placeholder="请填写课程标题" autofocus required>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="" class="col-md-2 control-label">讲师</label>
+                    <div class="col-md-3">
+                        <select name="cs_tc_id" class="form-control input-sm">
+                            {{#each (teachers)}}
+                            <option value="{{this.tc_id}}" {{#if (this.tc_id=== course.cs_tc_id) }} selected {{/if}}>{{this.tc_name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
                 <div class="col-md-11">
                     <button type="submit" class="btn btn-success btn-sm pull-right">创建课程</button>
                 </div>

@@ -40,7 +40,9 @@ var tcModel = require('../models/teacher');
 var lsModel = require('../models/lesson');
 
 router.get('/add',function (req,res) {
-    res.render('courses/add');
+    tcModel.staus(function (err,result) {
+        res.render('courses/add',{teachers:result});
+    })
 })
 
 //课程列表
@@ -137,7 +139,7 @@ router.get('/basic/:cs_id', function (req, res) {
         // 课程信息
         data.course = result[0];
 
-        tcModel.show(function (err, rows) {
+        tcModel.staus(function (err, rows) {
             if(err) return;
 
             // 讲师数据

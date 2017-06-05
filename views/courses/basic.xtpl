@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="" class="col-md-2 control-label">讲师</label>
                         <div class="col-md-8">
-                            <select name="cs_tc_id" class="form-control input-sm">
+                            <select name="cs_tc_id" class="form-control input-sm" {{#if (loginfo.tc_type)}} disabled {{/if}}>
                                 {{#each (teachers)}}
                                 <option value="{{this.tc_id}}" {{#if (this.tc_id=== course.cs_tc_id) }} selected {{/if}}>{{this.tc_name}}</option>
                                 {{/each}}

@@ -38,6 +38,7 @@
                 </a>
             </li>
             {{/if}}
+            {{#if (!loginfo.tc_type)}}
             <li>
                 <a href="javascript:;">
                     <i class="fa fa-cog"></i>
@@ -45,27 +46,32 @@
                     <i class="arrow fa fa-angle-right"></i>
                 </a>
                 <ul class="list-unstyled">
-                    {{#if (!loginfo.tc_type)}}
                     <li>
                         <a href="/course/add">
                             课程添加
                         </a>
                     </li>
-                    {{/if}}
                     <li>
                         <a href="/course/list">
                             课程列表
                         </a>
                     </li>
-                    {{#if (!loginfo.tc_type)}}
                     <li>
                         <a href="/course/category">
                             课程分类
                         </a>
                     </li>
-                    {{/if}}
                 </ul>
             </li>
+            {{/if}}
+            {{#if (loginfo.tc_type)}}
+            <li>
+                <a href="/course/list/{{loginfo.tc_id}}">
+                    <i class="fa fa-cog"></i>
+                    课程管理
+                </a>
+            </li>
+            {{/if}}
         </ul>
     </div>
 </div>
