@@ -347,11 +347,24 @@ router.post('/lesson/delete',function (req,res) {
     });
 })
 
-//搜索课程
+//管理员搜索课程
 router.post('/search',function (req,res) {
     var cs_name =  req.body.cs_name;
     console.log(cs_name);
     csModel.search(cs_name,function (err,result) {
+        if(err) return;
+        res.json({
+            result:result
+        });
+    });
+})
+
+//讲师搜索课程
+router.post('/search/:tc_id',function (req,res) {
+    var cs_name =  req.body.cs_name;
+    var tc_id = req.params.tc_id;
+   // console.log(cs_name);
+    csModel.tcsearch(tc_id,cs_name,function (err,result) {
         if(err) return;
         res.json({
             result:result

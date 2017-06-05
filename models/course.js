@@ -31,9 +31,16 @@ exports.tccourse = function (tc_id,callback) {
     db.query(query,callback);
 }
 
-//搜索课程
+//管理员搜索课程
 exports.search = function (cs_name,callback) {
     var query = "SELECT * FROM `course` AS cs LEFT JOIN `teacher` AS tc ON cs.cs_tc_id= tc.tc_id LEFT JOIN `category` AS cg ON cs.cs_cg_id= cg.cg_id WHERE cs_name LIKE '%"+cs_name+"%'";
+
+    db.query(query,callback);
+}
+
+//讲师搜索课程
+exports.tcsearch = function (tc_id,cs_name,callback) {
+    var query = "SELECT * FROM `course` AS cs LEFT JOIN `teacher` AS tc ON cs.cs_tc_id= tc.tc_id LEFT JOIN `category` AS cg ON cs.cs_cg_id= cg.cg_id WHERE cs_tc_id ="+ tc_id +"  AND cs_name LIKE '%"+cs_name+"%'";
 
     db.query(query,callback);
 }

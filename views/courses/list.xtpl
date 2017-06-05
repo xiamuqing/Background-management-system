@@ -10,7 +10,12 @@
 				<div class="courses">
 					<!-- 搜索 -->
 					<div class="search">
-						<form action="" class="form-inline" id="cSearchForm">
+                        {{#if (!loginfo.tc_type)}}
+						<form action="" class="form-inline" id="cSearchForm" data-url="/course/search">
+                        {{/if}}
+                        {{#if (loginfo.tc_type)}}
+                        <form action="" class="form-inline" id="cSearchForm" data-url="/course/search/{{loginfo.tc_id}}">
+                        {{/if}}
 							<select name="" class="form-control input-sm">
 								<option value="">按类别</option>
 							</select>

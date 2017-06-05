@@ -112,7 +112,7 @@ define(function (require,exports,module) {
     $('#cSearchForm').on('submit',function () {
         console.log($(this).serialize());
         $.ajax({
-            url:'/course/search',
+            url:$(this).attr('data-url'),
             type:'post',
             data:$(this).serialize(),
             success:function (info) {
