@@ -68,6 +68,22 @@
 							<a href="javascript:;" class="btn btn-warning btn-xs">锁定</a>
 						</td>
 					</tr>
+					<tr>
+						<td>2</td>
+						<td>songjingyu@sina.com</td>
+						<td>宋静宇</td>
+						<td>27</td>
+						<td>男</td>
+						<td>青海省</td>
+						<td>153464362</td>
+						<td>100</td>
+						<td>2016/05/01 10:12:32</td>
+						<td>2016/05/10 12:16:19</td>
+						<td>
+							<a href="/user/profile" class="btn btn-info btn-xs">查看</a>
+							<a href="javascript:;" class="btn btn-warning btn-xs">锁定</a>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

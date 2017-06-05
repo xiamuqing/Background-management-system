@@ -5,7 +5,7 @@
         <!-- 面包屑 -->
         <ol class="breadcrumb">
             <li><a href="javascript:;">课程管理</a></li>
-            <li class="active">课程添加</li>
+            <li class="active">课时管理</li>
         </ol>
         <div class="steps">
             <!-- 摘要 -->

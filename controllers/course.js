@@ -45,7 +45,7 @@ router.get('/add',function (req,res) {
     })
 })
 
-//课程列表
+//课程列表 管理员
 router.get('/list',function (req,res) {
     //取出所有课程
     csModel.list(function (err,result) {
@@ -53,6 +53,16 @@ router.get('/list',function (req,res) {
         res.render('courses/list',{courses:result});
     }) 
 })
+
+//课程列表 讲师部分
+router.get('/list/:tc_id',function (req,res) {
+    var tc_id = req.params.tc_id;
+    csModel.tccourse(tc_id,function (err,result) {
+        if(err) return;
+        res.render('courses/list',{courses:result});
+    })
+})
+
 router.get('/category',function (req,res) {
     //查询所有分类
     cgModel.list(function (err,result) {
