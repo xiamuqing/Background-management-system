@@ -277,7 +277,7 @@ router.post('/crop', function (req, res) {
 
 });
 
-//添加课时
+//课时列表
 router.get('/lesson/:cs_id', function (req, res) {
     //根据ID 获取课程
     var cs_id = req.params.cs_id;

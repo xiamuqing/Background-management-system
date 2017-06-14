@@ -97,20 +97,6 @@
 
 {{#block ('template')}}
 
-<script type="text/template" id="itemTpl">
-    <li>
-        <i class="fa fa-file-video-o"></i>
-        <span class="order">课时：<%= index %></span>
-        <span class="name"><%= lsName %></span>
-        <span class="duration"><%= lsDuration %></span>
-        <!-- 操作 -->
-        <div class="action pull-right">
-            <a href="javascript:;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
-            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-        </div>
-    </li>
-</script>
-
 <script type="text/template" id="lessonTpl">
     <input type="hidden" name="ls_cs_id" value="{{course.cs_id}}">
     <input type="hidden" name="ls_id" value="<%= ls_id%>">
