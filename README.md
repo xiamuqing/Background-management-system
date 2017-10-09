@@ -35,3 +35,12 @@
 
 1. 使用mysql导入db.sql文件，在config/db.js文件里修改数据库配置。
 并在teacher表中手动添加一条初始数据，并将tc_type值为0，
+sql语句：
+``` 
+INSERT INTO `teacher` (`tc_name`,`tc_pass`,`tc_type`) VALUES('admin','123456',0);
+```
+2. 当前目录下打开命令行窗口，输入`npm install `,安装依赖项。
+
+3. 在命令行窗口运行app.js :`node app.js`
+
+4. 打开浏览器，地址栏输入：`localhost:3000/`，自动跳转到登入页面，使用手动插入的用户名和密码登入成功后进入该管理系统。
