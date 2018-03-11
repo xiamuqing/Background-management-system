@@ -22,7 +22,8 @@ app.use(cookieParser());
 //req添加一个属性 session
 app.use(session({
     secret:'keyboard cat',
-    resave:false
+    resave:false,
+    saveUninitialized: true
 }));
 
 // 解析 application/x-www-form-urlencoded 将数据绑定在req中
@@ -45,8 +46,7 @@ app.use(function (req,res,next) {
 
     //app.locals express提供的一个全局的对象
     //在这个对象的数据可以在任何视图上获得
-    var loginfo = req.session.loginfo;
-    app.locals.loginfo = loginfo;
+   app.locals.loginfo = loginfo;
 
     if(url !='/login'&& !loginfo){
         //未登录&当前网页不是login 就跳转
